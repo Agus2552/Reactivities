@@ -1,5 +1,6 @@
 ﻿using Domain;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Activities {
@@ -14,7 +15,7 @@ namespace Application.Activities {
             }
             public async Task<List<Activity>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return _context.Activities.ToList();
+                return await _context.Activities.ToListAsync();
             }
         }
     }
